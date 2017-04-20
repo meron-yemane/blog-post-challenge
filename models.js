@@ -1,7 +1,5 @@
 const mongoose = require('mongoose');
 
-const uuid = require('uuid');
-
 // This module provides volatile storage, using a `BlogPost`
 // model. We haven't learned about databases yet, so for now
 // we're using in-memory storage. This means each time the app stops, our storage
@@ -26,14 +24,17 @@ blogSchema.virtual('authorName').get(function() {
   return `${this.author.firstName} ${this.author.lastName}`.trim()
 });
 
-function StorageException(message) {
-   this.message = message;
-   this.name = "StorageException";
+blogSchema.methods.apiRepr = function() {
+  return {
+    id: this._id,
+    author: this.authorName,
+    title: this.title,
+    content: this.content,
+    publishDate: this.publishDate
+  };
 }
 
 
 const Blogs = mongoose.model('Blogs', blogSchema);
 
-
-module.exports = {BlogPosts: createBlogPostsModel()};
 module.exports = {Blogs}
