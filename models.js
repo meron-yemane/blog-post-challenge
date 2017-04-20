@@ -12,6 +12,20 @@ const uuid = require('uuid');
 // is implemented, and getting it to use an existing model.
 
 
+const blogSchema = mongoose.Schema({
+  title: {type: String, required: true},
+  content: {type: String, required: true},
+  publishDate: {type: Date, required: false},
+  author: {
+    firstName: String,
+    lastName: String
+  }
+});
+
+blogSchema.virtual('authorName').get(function() {
+  return `${this.author.firstName} ${this.author.lastName}`.trim()
+});
+
 function StorageException(message) {
    this.message = message;
    this.name = "StorageException";
@@ -68,6 +82,8 @@ function createBlogPostsModel() {
   storage.posts = [];
   return storage;
 }
+
+const Blogs = mongoose.model('Blogs', blogSchema);
 
 
 module.exports = {BlogPosts: createBlogPostsModel()};
