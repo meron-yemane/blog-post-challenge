@@ -2,9 +2,10 @@
   "name": "blog-api",
   "version": "1.0.0",
   "description": "An api for blogs challenge",
-  "main": "index.js",
+  "main": "server.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "start": "node server.js",
+    "test": "mocha ./tests"
   },
   "author": "",
   "license": "ISC",
@@ -13,5 +14,16 @@
     "express": "^4.15.2",
     "morgan": "^1.8.1",
     "uuid": "^3.0.1"
+  },
+  "keywords": [
+    "node",
+    "hyperdev",
+    "express"
+  ],
+  "devDependencies": {
+    "chai": "^3.5.0",
+    "chai-http": "^3.0.0",
+    "mocha": "^3.2.0",
+    "mongoose": "^4.9.5"
   }
 }
