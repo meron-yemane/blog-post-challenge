@@ -7,13 +7,6 @@ const router = express.Router();
 
 const {BlogPosts} = require('./models');
 
-BlogPosts.create(
-  "From Geek to Freak", "A most unlikely body transformation story", "Tim Ferriss"
-);
-BlogPosts.create(
-  "Sales talk", "A guide to crushing it in Sales", "IDK"
-);
-
 router.get('/', (req, res) => {
   res.json(BlogPosts.get());
 });

@@ -1,9 +1,17 @@
 const express = require('express');
 const morgan = require('morgan');
+const mogoose = require('mongoose');
+const bodyParser = require('body-parser');
+//mongoose.Promise = global.Promise;
 
 const app = express();
 
 const blogRouter = require('./blogRouter')
+
+const {PORT, DATABASE_URL} = require('./config')
+const {Blogs} = require('./models')
+
+app.use(bodyParser.json());
 
 app.use(morgan('common'));
 
