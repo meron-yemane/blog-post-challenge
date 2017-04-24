@@ -2,7 +2,7 @@ const express = require('express');
 const morgan = require('morgan');
 const mongoose = require('mongoose');
 const bodyParser = require('body-parser');
-//mongoose.Promise = global.Promise;
+mongoose.Promise = global.Promise;
 
 const app = express();
 
@@ -132,6 +132,9 @@ app.post('/posts', (req, res) => {
       .catch(err => res.status(500).json({message: 'Internal server error'}));
   });
 
+  app.use('*', function(req, res) {
+    res.status(404).json({message: 'Not founf'});
+  });
 
 
 
