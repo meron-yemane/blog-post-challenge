@@ -54,10 +54,7 @@ app.get('/posts', (req, res) => {
     .find()
     .exec()
     .then(posts => {
-      res.json({
-        posts: posts.map(
-          (post) => post.apiRepr())
-      });
+      res.json(posts.map((post) => post.apiRepr()));
     })
     .catch(
       err => {
@@ -78,7 +75,7 @@ app.get('/posts/:id', (req, res) => {
 });
 
 app.post('/posts', (req, res) => {
-  const requiredFields = ['author', 'content', 'title'];
+  const requiredFields = ['firstName', 'lastName', 'content', 'title'];
   for (var i=0; i<requiredFields.length; i++) {
     var field = requiredFields[i];
     if (!(field in req.body)) {
@@ -90,7 +87,10 @@ app.post('/posts', (req, res) => {
 
   Blogs
     .create({
-      author: req.body.author,
+      author: {
+        firstName: req.body.firstName,
+        lastName: req.body.lastName
+      },
       content: req.body.content,
       title: req.body.title,
       publishDate: req.body.publishDate})
