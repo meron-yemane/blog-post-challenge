@@ -133,17 +133,8 @@ app.post('/posts', (req, res) => {
   });
 
   app.use('*', function(req, res) {
-    res.status(404).json({message: 'Not founf'});
+    res.status(404).json({message: 'Not found'});
   });
-
-
-
-
-
-
-
-
-
 
 if (require.main === module) {
   runServer().catch(err => console.error(err));
