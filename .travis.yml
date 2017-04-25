@@ -1,3 +1,11 @@
 language: node_js
 node_js: node
 services: mongodb
+deploy:
+  provider: heroku
+  api_key:
+    secure: FKVI6cyuhjaIs7yY8DpwiAQ9ksO7k47SytZtxN35NUVjIuEfHHe/ROvSKgqC73q6QCn4LhTQAx2MPBVEuASorlAptfUnBIH/dN4yuG4AYJIQmiGd3mC86XUZAy/2WLg5EHJqFghfcsHVk4mYpQWnNzGFXkhrmzgwNHo4GsKOJvWPo8eChJzKgl5TFrOtuLN4muaMO+8/nlveHaEGcgfYPpOHB4ezHVm5Eii77Q8UR8OQIVSW+tW1qCA9sM/rH7F/Ti37vL97O3UjjKkc2LCWENYJCAmcJO/eVOy6neI/5MIkQibgH9x5QZuV5tzyoQI00xnRgR0rCFTn4+RELJ5cE0yaZ+aoUn30r9MNTuF5Y0bkxeNbNuWH5kljfaEF17tTJsrfxAd8n37rMZXVHZzhKeS55IPTkjduCyA1AGXy4r/KIfho9HM3yDMUJDQib10ayY3J+91S69EsgiWkFZV592ZgGyRQ4+oQe2qsTdegelGabWgZSiPf0QXt/0TPYS1tJF2qJZFGwUwc6ntFn2GOaYjsz0EzBPC8dYrlOA9jIzpfJpazN9wD2+Hy8OGpzUmBJSNvVKs4JoqoDJ7+lrv5aYc0DpM/SBTVpFcgdwczhhjd9uPveKyMAe4J8MyuScjdoARtfbg8nrOk1F23XHmF717dcRHFuzypgvxuHZljEwA=
+  app: frozen-cove-15094
+  skip_cleanup: true
+  on:
+    repo: meron93/blog-post-challenge
