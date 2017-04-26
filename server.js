@@ -111,15 +111,19 @@ app.post('/posts', (req, res) => {
     const toUpdate = {};
     const updateableFields = ['author', 'title', 'publishDate', 'content'];
     updateableFields.forEach(field => {
-      if (field in req.body) {
-        toUpdate[field] = req.body[field];
-      }
+        if (field === 'author') {
+          toUpdate['author'] = {};
+          toUpdate.author.firstName = req.body.firstName;
+          toUpdate.author.lastName = req.body.lastName;
+        } else {
+          toUpdate[field] = req.body[field];
+        }
     });
-
+    console.log(toUpdate);
     Blogs 
       .findByIdAndUpdate(req.params.id, {$set: toUpdate})
       .exec()
-      .then(post => res.status(204).end())
+      .then(post => res.status(200).json(post))
       .catch(err => res.status(500).json({message: 'Internal server error'}));
   }); 
 
