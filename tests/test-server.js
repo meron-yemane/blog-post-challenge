@@ -9,6 +9,15 @@ chai.use(chaiHttp);
 
 describe('Blogs', function() {
   before(function() {
+    Blogs
+    .create({
+      author: {
+        firstName: "Meron",
+        lastName: "Yemane"
+      },
+      content: "This is a test!",
+      title: "Test",
+    })
     return runServer();
   });
   after(function() {
@@ -65,7 +74,7 @@ describe('Blogs', function() {
           .put(`/posts/${res.body[0].id}`)
           .send(updateData)
         .then(function(res) {
-          res.should.have.status(204);
+          res.should.have.status(200);
           res.body.should.be.a('object');
           res.body.should.be.json;
           })
