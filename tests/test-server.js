@@ -1,5 +1,6 @@
 const chai = require('chai');
 const chaiHttp = require('chai-http');
+const Blogs = require('../models');
 
 const {app, runServer, closeServer} = require('../server');
 const should = chai.should();
@@ -75,7 +76,7 @@ describe('Blogs', function() {
         .then(function(res) {
           res.should.have.status(200);
           res.body.should.be.a('object');
-          res.body.should.be.json;
+          res.should.be.json;
           })
       });
   });
