@@ -5,7 +5,6 @@ const bodyParser = require('body-parser');
 mongoose.Promise = global.Promise;
 
 const app = express();
-
 const blogRouter = require('./blogRouter')
 
 const {PORT, DATABASE_URL} = require('./config')
