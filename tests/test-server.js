@@ -52,7 +52,7 @@ describe('Blogs', function() {
       .send(newItem)
       .then(function(res) {
         res.should.have.status(201);
-        res.should.b.json;
+        res.should.be.json;
         res.body.should.be.a('object');
         res.body.should.include.keys('id', 'title', 'content', 'author');
         res.body.id.should.not.be.null;
